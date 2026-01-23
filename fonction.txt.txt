@@ -1,0 +1,23 @@
+Méthodes: fonctions liés à la classe
+1. Constructeur, afficheur, accesseurs
+2. Méthodes, définies par le développeur
+
+
+1. Porté  public
+2. mots clefs fonction
+3. non de la fonction  klaxonner
+4. paramètres   aucun
+5: type
+
+
+
+opérateur: accesseur: ->
+
+accède à une propriété ou méthode d'une instance
+
+Autoloading
+Dépendances
+
+nouveau projet 20%- 1% reste: librairies existantes(les miennes ou public) 80%
+
+L'espace de Noms pour pouvoir choisir les noms qu'on veut pour éviter les dépendances 
