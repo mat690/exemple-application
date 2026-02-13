@@ -14,25 +14,17 @@
 <body>
 <h2>🏭 Provisionner un Serveur Sécurisé</h2>
 
-<form method="POST" action="traitement.php">
+<form method="POST" action="traitement_routeur.php">
     <label>Nom d'hôte (Hostname) :</label>
     <input type="text" name="hostname" required placeholder="Ex: SRV-DB-02 (Lettres, chiffres, tirets)">
 
     <label>Adresse IP :</label>
     <input type="text" name="ip" required placeholder="Ex: 192.168.1.50">
 
-    <label>Système d'Exploitation :</label>
-    <select name="os">
-        <option value="Debian 12">Debian 12</option>
-        <option value="Ubuntu 24.04">Ubuntu 24.04</option>
-        <option value="Windows Server 2022">Windows Server 2022</option>
-        <option value="RedHat 9">RedHat 9</option>
+    <label>Nombre de ports :</label>
+    <input type="number" name="nbPorts" required placeholder="24">
 
-        <option value="Windows XP">Windows XP (Interdit)</option>
-        <option value="TempleOS">TempleOS (Interdit)</option>
-    </select>
-
-    <button type="submit">Créer le serveur</button>
+    <button type="submit">Monter le routeur</button>
 </form>
 </body>
 </html>

@@ -1,22 +1,42 @@
 <?php
 namespace App;
+
 class Serveur extends EquipementReseau
 {
     private string $os;
 
-    public function __construct(string $hostname, string $ip,  string $os)
+    // NOUVEAU : Un tableau pour stocker les objets "Service"
+    private array $services = [];
+
+    public function __construct(string $hostname, string $ip, string $os)
     {
-        parent::__construct($hostname, $ip);
+        parent:: __construct($hostname, $ip); // Validation auto du parent
         $this->os = $os;
     }
 
 
-    public function afficherStatut(): string
+    public function ajouterService(Service $service): void
     {
-        return parent::afficherStatut() . "| OS : $this->os";
+        // On ajoute l'objet reçu dans notre tableau
+        $this->services[] = $service;
     }
 
+    public function afficherStatut(): string
+    {
+        // 1. On affiche les infos de base du serveur
+        $html = parent::afficherStatut() . " | OS : $this->os <br>";
 
+        // 2. On boucle sur les services pour afficher leur état
+        if (empty($this->services)) {
+            $html .= "<em>Aucun service installé.</em>";
+        } else {
+            $html .= "<strong>Services : </strong>";
+            foreach ($this->services as $service) {
+                // On délègue l'affichage à la classe Service (Chacun son métier)
+                $html .= $service->getStatut() . " ";
+            }
+        }
 
-
+        return $html;
+    }
 }

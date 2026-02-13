@@ -7,10 +7,23 @@ class Routeur extends EquipementReseau
 
     public function __construct(string $hostname, string $ip, int $nbPorts)
     {
+<<<<<<< HEAD
         if($nbPorts<1 || $nbPorts >120) {
             throw new\Exception(message"Erreur Matterielel : le nombre de ports n'est pas valide. ici vous demnandez $nbPorts pas corret")
         }
         parent::__construct($hostname, $ip);
+=======
+
+        if ($nbPorts < 1 || $nbPorts > 128) {
+            // Si le nombre de ^ports est trop petit ou trop grand
+            throw new \Exception("ERREUR MATERIELLE : le nombre de ports n'est pas valide. Ici vous demandez $nbPorts pas correct.");
+        }
+
+        //  Appel du constructeur parent (qui va valider IP et Hostname)
+        parent::__construct($hostname, $ip);
+
+        //  Assignation
+>>>>>>> 8b45384ec0ad0ee109ea85da78c2932cbbd9ef76
         $this->nbPorts = $nbPorts;
     }
 
@@ -18,5 +31,9 @@ class Routeur extends EquipementReseau
     {
         return parent::afficherStatut() . " | Ports : $this->nbPorts";
     }
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 8b45384ec0ad0ee109ea85da78c2932cbbd9ef76

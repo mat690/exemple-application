@@ -1,0 +1,25 @@
+<?php
+
+require '../vendor/autoload.php';
+
+use App\Serveur;
+
+use App\Service;
+
+$serveurWeb=new Serveur("SRV-WEB-01", "192.168.1.1", "Debian");
+$objetServiceApache = new Service("Apache", 80);
+$objetServiceSSH = new Service("SSH", 22);
+
+$objetServiceApache->demarrer();
+$objetServiceSSH->demarrer();
+$serveurWeb->ajouterService($objetServiceApache);
+$serveurWeb->ajouterService($objetServiceSSH);
+
+
+$serveurSQL= new Serveur("SRV-DB-01", "192.168.1.2", "Windows");
+$objetserviceSQL= new Service("MySQL", "3306");
+$objetserviceSQL-> demarrer();
+$objetserviceRDP= new Service("RDP", "3389");
+$objetserviceRDP->arreter();
+
+echo
