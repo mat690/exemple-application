@@ -12,15 +12,27 @@ class EquipementReseau
     // CONSTRUCTEUR : La méthode appelée automatiquement à la création (new)
     // C'est ici qu'on force la cohérence de l'objet.
     // Pas de setter ! Un équipement DOIT avoir une IP dès sa naissance.
+
     public function __construct(string $hostname, string $ip)
-    {
-        $this->hostname = $hostname;
-        $this->ip = $ip;
+{
+    // ÉTAPE 1 : Validation défensive
+    // Avant même d'assigner quoi que ce soit, on vérifie !
+    if (!Validator::isIpValid($ip)) {
+        // Si l'IP est pourrie, on lance une Exception (une erreur fatale contrôlée)
+        throw new \Exception("ERREUR DE SÉCURITÉ : L'IP '$ip' n'est pas valide !");
+    }
+    if (!validator::isHostnameValid($hostname)) {
+        throw new \Exception("erreur de sécurité: Le nom '$hostname" est pas valide");
     }
 
-    // MÉTHODE : Une action que l'objet peut faire
+    // ÉTAPE 2 : Assignation (seulement si l'étape 1 est passée)
+    $this->hostname = $hostname;
+    $this->ip = $ip;
+}
     public function afficherStatut(): string
     {
         return "Équipement : $this->hostname ($this->ip)";
     }
 }
+
+    // ... reste de la classe ...

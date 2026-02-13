@@ -21,3 +21,5 @@ Dépendances
 nouveau projet 20%- 1% reste: librairies existantes(les miennes ou public) 80%
 
 L'espace de Noms pour pouvoir choisir les noms qu'on veut pour éviter les dépendances 
+
+App

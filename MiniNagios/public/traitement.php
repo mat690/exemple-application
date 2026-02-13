@@ -16,7 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // 2. Tentative de création (Code "Naïf")
     // ATTENTION : Si le constructeur lance une Exception, le script plantera ici !
-    $nouveauServeur = new Serveur($nom, $ip, $os);
+
+    try{
+        $nouveauServeur = new Serveur($nom, $ip, $os);
+    }
+    catch (Exception $e){
+
+    }
+    ;
 
     // Si tout va bien, on affiche le succès
     echo "<div style='color:green; border: 1px solid green; padding: 10px;'>";

@@ -14,7 +14,7 @@ class Serveur extends EquipementReseau
     public function afficherStatut(): string
     {
         return parent::afficherStatut() . "| OS : $this->os";
-    }cd
+    }
 
 
 

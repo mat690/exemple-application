@@ -5,11 +5,8 @@ require '../vendor/autoload.php';
 
 use App\Serveur;
 use App\Routeur;
+use App\Imprimante ;
 
-require '../vendor/autoload.php';
-
-use App\Serveur;
-use App\Routeur;
 
 echo "<h1>Console de Supervision</h1>";
 
@@ -46,14 +43,14 @@ echo "<h1>Tableau de bord Mini-Nagios</h1>";
 $imprimanteHP= new Imprimante("Laser", false,"192.168.1.23", "HP-Etage-1");
 $imprimCanon= new Imprimante("Jet d'encre", true, "192.168.1.24", "Canon-Direction");
 
-$monSwitch = new switch SwitchReseau ($hostname "SW-principal, $ip "10.0.210.6"
+$exemple = new \App\SwitchReseau("SW-Principal","10.0.210.6",24) ;
+
 
 echo "<p>" . $monServeurWeb->afficherStatut() . "</p>";
 echo "<p>" . $monServeurAD->afficherStatut() . "</p>";
 echo "<p>" . $monRouteur->afficherStatut() . "</p>";
 echo"<p>" . $imprimanteHP->afficherStatut() . "</p>";
 echo"<p>" . $imprimCanon->afficherStatut() . "</p>";
-echo "<p>" . $
 
 echo "<pre>";
 var_dump($monServeurWeb);
