@@ -5,10 +5,14 @@ class Serveur extends EquipementReseau
 {
     private string $os;
 
-    
+
 
     // NOUVEAU : Un tableau pour stocker les objets "Service"
     private array $services = [];
+
+    // NOUVEAU : Un tableau pour stocker les objets "Service"
+
+
 
     public function __construct(string $hostname, string $ip, string $os)
     {
@@ -17,11 +21,27 @@ class Serveur extends EquipementReseau
     }
 
 
+
+    /**
+     * C'est ici que la COMPOSITION opère.
+     * On injecte un objet "Service" à l'intérieur du Serveur.
+     */
     public function ajouterService(Service $service): void
     {
         // On ajoute l'objet reçu dans notre tableau
         $this->services[] = $service;
     }
+
+    public function verifierSante():string {
+
+        foreach($this->services as $service) {
+            if (! $service->estDemarre() && $service->estCritique()) {
+                return "<span style='color:red'>DANGER </span>";
+            }
+        }
+        return "<span style='color:green'>OK </span>";
+    }
+
 
     public function afficherStatut(): string
     {

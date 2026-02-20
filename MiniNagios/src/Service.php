@@ -7,17 +7,30 @@ class Service
     private int $port;
     private bool $estDemarre; // État du service (Allumé/Éteint)
 
-    public function __construct(string $nom, int $port,)
+
+    private bool $estCritique ;
+
+
+    public function __construct(string $nom, int $port, bool $critique)
     {
-        // Petit rappel de la Séance 2 : Validation !
-        if ($port < 1 || $port > 65535) {
-            throw new \Exception("SERVICE : Le port $port est invalide.");
-        }
+
+        Validator::verifieNbPorts($port) ;
+        $this->port = $port;
+
 
         $this->nom = $nom;
-        $this->port = $port;
+        $this->estCritique = $critique;
         $this->estDemarre = false; // Par défaut, un service est éteint
     }
+
+    public function estCritique(): bool {
+        return $this->estCritique;
+    }
+
+    public function estDemarre(): bool {
+        return $this->estDemarre;
+    }
+
 
     public function demarrer(): void
     {
@@ -37,4 +50,5 @@ class Service
 
         return "<span style='color:$couleur'>[$this->nom : $etat : Port $this->port]</span>";
     }
+
 }

@@ -6,6 +6,38 @@ use App\Routeur;
 use App\Imprimante ;
 
 
+$imprimpeHP = new Imprimante("Laser",false,"192.168.1.23","HP-Etage-1" );
+$imprimeCanon = new Imprimante("Jet d’encre",true, "192.168.1.24" , "Canon-Direction") ;
+
+$monSwitch = new SwitchReseau("SW-Principal", "10.0.210.6", 24, 1) ;
+
+// 4. Utilisation des objets
+echo "<h1>Tableau de bord Mini-Nagios</h1>";
+
+
+echo "<p>" . $imprimpeHP->afficherStatut() . "</p>";
+echo "<p>" . $imprimeCanon->afficherStatut() . "</p>";
+echo "<p>" . $monSwitch->scannerPorts() . "</p>";
+
+
+
+
+
+/*$ipTest = "999.0.0.1";
+if (App\Validator::isIpValid($ipTest)) {
+    echo "IP Valide Convert string literal to heredoc  <BR>";
+} else {
+    echo "IP Invalide (Sécurité activée) <BR>";
+}
+
+$ipTest = "10.100.0.11";
+if (App\Validator::isIpValid($ipTest)) {
+    echo "IP Valide Convert string literal to heredoc  <BR>";
+} else {
+    echo "IP Invalide (Sécurité activée)  <BR>";
+}*/
+
+/*$srvHack = new Serveur("Hacker", "Ceci n'est pas une IP", "Windows");*/
 echo "<h1>Console de Supervision</h1>";
 
 try {
