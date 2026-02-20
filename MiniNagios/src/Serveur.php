@@ -5,6 +5,8 @@ class Serveur extends EquipementReseau
 {
     private string $os;
 
+    
+
     // NOUVEAU : Un tableau pour stocker les objets "Service"
     private array $services = [];
 
