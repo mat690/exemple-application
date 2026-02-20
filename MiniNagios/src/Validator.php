@@ -46,6 +46,13 @@ public static function isPrinterTypeValid(string $type): bool{
         $listeOS=["Debian 12", "Debian", "Ubuntu 24.04", "Windows Server 2022", "RedHat 9"];
         return in_array($os,$listeOS);
 }
+
+
+public function testHostnameValide(){
+    "SRV-WEB-01"=true;
+    "srv-web"=true;
+    "RV WEB"=false;
+    "SRV_WEB"=false;
 }
 
 

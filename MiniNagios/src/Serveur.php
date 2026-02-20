@@ -7,6 +7,7 @@ class Serveur extends EquipementReseau
 
 
 
+
     // NOUVEAU : Un tableau pour stocker les objets "Service"
     private array $services = [];
 
@@ -42,23 +43,31 @@ class Serveur extends EquipementReseau
         return "<span style='color:green'>OK </span>";
     }
 
-
     public function afficherStatut(): string
     {
         // 1. On affiche les infos de base du serveur
         $html = parent::afficherStatut() . " | OS : $this->os <br>";
 
         // 2. On boucle sur les services pour afficher leur état
+      if($this->maintenance){
+          $html="Le serveur est maintenant en maintenance 🚧";
+      }
         if (empty($this->services)) {
             $html .= "<em>Aucun service installé.</em>";
         } else {
             $html .= "<strong>Services : </strong>";
             foreach ($this->services as $service) {
                 // On délègue l'affichage à la classe Service (Chacun son métier)
-                $html .= $service->getStatut() . " ";
+                $html .= $service->getStatut() . "";
             }
         }
 
         return $html;
+    }
+    public function enMaintenance():bool{
+        return $this->maintenance;
+    }
+    public function activerMaintenance():void {
+        $this->maintenance = true;
     }
 }

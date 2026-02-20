@@ -1,6 +1,6 @@
 <?php
 
-<<<<<<< HEAD
+
 require '../vendor/autoload.php';
 
 use App\Serveur;
@@ -34,11 +34,8 @@ $objetserviceRDP->arreter();
  $serveurBDD->ajouterService($objetserviceSQL);
 $serveurBDD->ajouterService($objetserviceRDP);
 
-=======
-require "../vendor/autoload.php";
 
-use App\Service;
-use App\Serveur;
+
 
 $serveurWeb = new Serveur("SRV-WEB-01", "192.168.1.1", "Debian");
 $serviceApache = new Service("Apache", 80, true);
@@ -60,4 +57,3 @@ $serviceRDP = new Service("RDP", 3389, false);
 $serveurBDD->ajouterService($serviceMySQL);
 $serveurBDD->ajouterService($serviceRDP);
 echo $serveurBDD->afficherStatut();
->>>>>>> 9065e35310ef420a3e9e87bd81fdd6d5586c1776
