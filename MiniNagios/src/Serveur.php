@@ -24,6 +24,9 @@ class Serveur extends EquipementReseau
     }
 
 
+    public function getOs(): string {
+        return $this->os;
+    }
 
     /**
      * C'est ici que la COMPOSITION opère.
@@ -80,7 +83,5 @@ class Serveur extends EquipementReseau
         return $this->services;
     }
 
-    public function getOs(): string {
-        return $this->os;
-    }
+
 }
