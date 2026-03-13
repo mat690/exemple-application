@@ -51,15 +51,10 @@ class Serveur extends EquipementReseau
         $html = parent::afficherStatut() . " | OS : $this->os <br>";
 
         // 2. On boucle sur les services pour afficher leur état
-<<<<<<< HEAD
-      if($this->maintenance){
-          $html="Le serveur est maintenant en maintenance 🚧";
-      }
-=======
+
         if ($this->maintenance) {
             $html.="Le serveur est maintenant en maintenance 🚧";
         }
->>>>>>> e6ab3292b9003e5569e8812cc30afb7992c3d277
         if (empty($this->services)) {
             $html .= "<em>Aucun service installé.</em>";
         } else {
@@ -72,26 +67,20 @@ class Serveur extends EquipementReseau
 
         return $html;
     }
-<<<<<<< HEAD
     public function enMaintenance():bool{
         return $this->maintenance;
     }
     public function activerMaintenance():void {
         $this->maintenance = true;
     }
-}
-=======
 
-    public function enMaintenance(): bool {
-        return $this->maintenance;
-    }
+
 
     public function recupereServices(){
         return $this->services;
     }
 
-    public function activerMaintenance(): void {
-        $this->maintenance = true;
+    public function getOs(): string {
+        return $this->os;
     }
 }
->>>>>>> e6ab3292b9003e5569e8812cc30afb7992c3d277
