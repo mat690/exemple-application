@@ -4,6 +4,7 @@ require '../vendor/autoload.php';
 use App\Serveur;
 use App\Routeur;
 use App\Imprimante ;
+use App\SwitchReseau;
 
 
 $imprimpeHP = new Imprimante("Laser",false,"192.168.1.23","HP-Etage-1" );

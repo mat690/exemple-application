@@ -17,15 +17,30 @@ class ServeurRepository
     public function sauvegarder(Serveur $serveur): void
     {
         // 1. Préparation de la requête (CYBERSÉCURITÉ : Les "?" empêchent l'injection SQL)
-        $sql = "INSERT INTO serveurs (hostname, ip, os) VALUES (:hostname, :ip, :os)";
+        $sql = "INSERT INTO serveur (hostname, ip, os) VALUES (:hostname, :ip, :os)";
         $stmt = $this->pdo->prepare($sql);
 
         // 2. Exécution en remplaçant les "trous" par les vraies valeurs de l'objet
         // Nous utilisons les getters de l'objet Serveur (Il faudra les créer !)
         $stmt->execute([
             'hostname' => $serveur->getHostname(),
-            'ip'       => $serveur->getIp(),
-            'os'       => $serveur->getOs()
+            'ip' => $serveur->getIp(),
+            'os' => $serveur->getOs()
         ]);
     }
+
+    public function listerTous(): array
+    {
+       $stmt= $this->pdo->prepare("SELECT * FROM serveur");
+       $stmt->execute();
+       $stmt= setFetchMode(mode:\PDO::FETCH_ASSOC);
+
+       $montableau= $stmt->fetchAll();
+     //  print_r($montableau);
+       return $montableau;
+
+        return $stmt->fetchAll();
+    }
+
+
 }
