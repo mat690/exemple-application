@@ -17,7 +17,7 @@ class ServeurRepository
     public function sauvegarder(Serveur $serveur): void
     {
         // 1. Préparation de la requête (CYBERSÉCURITÉ : Les "?" empêchent l'injection SQL)
-        $sql = "INSERT INTO serveurs (hostname, ip, os) VALUES (:hostname, :ip, :os)";
+        $sql = "INSERT INTO serveur (hostname, ip, os) VALUES (:hostname, :ip, :os)";
         $stmt = $this->pdo->prepare($sql);
 
         // 2. Exécution en remplaçant les "trous" par les vraies valeurs de l'objet
@@ -30,7 +30,7 @@ class ServeurRepository
     }
 
     public function listerTous(): array {
-        $stmt = $this->pdo->prepare("SELECT * FROM serveurs");
+        $stmt = $this->pdo->prepare("SELECT * FROM serveur");
         $stmt->execute();
         $stmt->setFetchMode(\PDO::FETCH_ASSOC);
         $montableau = $stmt->fetchAll();
@@ -38,7 +38,7 @@ class ServeurRepository
         return $montableau;
     }
     public function supprimerParId(int $id): void{
-        $sql = "DELETE FROM serveurs WHERE id = :id";
+        $sql = "DELETE FROM serveur WHERE id = :id";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute(['id'=>$id]);
     }

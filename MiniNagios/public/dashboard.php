@@ -10,24 +10,13 @@ $montableau= $monRepository->listerTous();
 
 
 
-// Connexion à la base
-$connexion = \App\Database::getConnection();
-
-// Instanciation du repository
-$ServeurRepository = new ServeurRepository($connexion);
 
 // Récupération des serveurs
-$serveurs = $ServeurRepository->listerTous();
+$serveurs = $monRepository->listerTous();
 
 ?>
 
 
-
-use App\ServeurRepository ;
-use App\Database;
-$monPDO = \App\Database::getConnection() ;
-$monRepository = new ServeurRepository($monPDO) ;
-$monTableauServeurs = $monRepository->listerTous() ;
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -64,13 +53,13 @@ $monTableauServeurs = $monRepository->listerTous() ;
     <tbody>
     <?php foreach ($montableau as $srv): ?>
         <tr>
-            <td><?= htmlspecialchars($srv['id']) ?></td>
+            <td><?= htmlspecialchars($srv['it']) ?></td>
             <td><?= htmlspecialchars($srv['hostname']) ?></td>
             <td><?= htmlspecialchars($srv['ip']) ?></td>
             <td><?= htmlspecialchars($srv['os']) ?></td>
             <td><?= htmlspecialchars($srv['date_creation']) ?></td>
             <td>
-                <a href="supprimer.php?id=<?= $srv['id'] ?>"
+                <a href="supprimer.php?id=<?= $srv['it'] ?>"
                    class="btn btn-danger"
                    onclick="return confirm('Êtes-vous sûr de vouloir supprimer ce serveur ?');">
                     🗑️ Supprimer
